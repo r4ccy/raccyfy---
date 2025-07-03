@@ -1,12 +1,34 @@
-# React + Vite
+# Raccyfy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Clon interactivo de Spotify con reproductor animado y funcionalidad exclusiva de líneas de tiempo musical.
 
-Currently, two official plugins are available:
+## Funcionalidad destacada
+- **Interfaz tipo Spotify** con reproductor animado
+- **Líneas de Tiempo Musical**: Visualiza la evolución de tus gustos musicales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías
+### Frontend
+- React + Vite
+- JavaScript
+- CSS
 
-## Expanding the ESLint configuration
+### Gestión de estado
+- Zustand <!--(gestión ligera de estado)-->
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Datos musicales
+- Spotify Web API
+- Axios para peticiones HTTP
+
+### Visualización
+- Recharts <!--(gráficos interactivos)-->
+
+### Calidad de código
+- Prettier <!--(formateo automático)-->
+- ESLint <!--(linting)-->
+
+## Cómo ejecutarlo
+```bash
+git clone https://github.com/r4ccy/raccyfy---.git
+cd raccyfy
+npm install
+npm run dev
