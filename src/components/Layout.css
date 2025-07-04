@@ -1,0 +1,8 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+    background-color: #121212;
+    color: white;
+    box-sizing: border-box;
+}
