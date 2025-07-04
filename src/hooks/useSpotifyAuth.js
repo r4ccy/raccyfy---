@@ -2,7 +2,7 @@ import {generateCodeChallenge, generateCodeVerifier} from "../utils/pkce";
 
 export function usarAutenticacionSpotify() {
   const CLIENTE_ID = "e083c518971545e686864f2cb358988b";
-  const REDIRECCION = "https://zippy-unicorn-dcb83e.netlify.app/";
+  const REDIRECCION = "https://zippy-unicorn-dcb83e.netlify.app/callback";
   const SCOPES = [
     "user-read-private",
     "user-read-email",
