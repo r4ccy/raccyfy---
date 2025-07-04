@@ -1,19 +1,21 @@
 import {usarAutenticacionSpotify} from "../hooks/useSpotifyAuth.js";
-import {useUserStore} from "../store/useUserStore.js";
+import useUserStore from "../store/useUserStore.js";   //no se lo importa con {}; {} -> nombre (algo especifico), sin {} -> todo lo que exporta el archivo
+import "./Login.css";
 
 function Login() {
     const {iniciarSesionConSpotify} = usarAutenticacionSpotify();
     const {setGuestName} = useUserStore();
 
     const ingresarComoInvitado = () => {
+        console.log("posi"); //borrar luego
         setGuestName("Invitado");
         window.location.href = "/";
     };
 
 return (
     <div className="welcome">
-        <h1>Bienvenida a Raccyfy</h1>
-        <p>¡Hola! Elegí cómo querés ingresar 🎧</p>
+        <h1>hiiii welcome</h1>
+        <p>Zzzzz...</p>
 
         <button onClick={ingresarComoInvitado} className="invite-button">
             Ingresar como invitado

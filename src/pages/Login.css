@@ -1,63 +1,77 @@
 .welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 0 1rem;
-  background-color: #121212;
-  color: white;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .welcome h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .welcome p {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
 }
 
 .welcome button {
-  background-color: #1DB954;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: #1db954;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 250px;
+    margin-top: 0.5rem;
 }
 
 .welcome button:hover {
-  background-color: #1ed760;
+    background-color: #1ed760;
 }
 
-@media (max-width: 600px) {
-  .welcome h1 {
-    font-size: 1.8rem;
-  }
+.welcome button:first-of-type {
+background-color: #444;
+}
 
-  .welcome button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
+.welcome button:first-of-type:hover {
+    background-color: #666;
+}
+
+.invite-button {
+    background-color: #535353;
+    color: white;
+}
+
+.invite-button:hover {
+    background-color: #6e6e6e;
 }
 
 .spotify-button {
-  display: inline-block;
-  background-color: #1DB954;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease;
+    background-color: #1DB954;
+    color: white;
 }
 
 .spotify-button:hover {
-  background-color: #1ed760;
+    background-color: #1ed760;
+}
+
+@media (max-width: 600px) {
+    .welcome h1 {
+        font-size: 1.8rem;
+    }
+
+    .welcome button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    }
 }
