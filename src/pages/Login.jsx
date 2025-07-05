@@ -47,7 +47,10 @@ return (
                 className="guest-input"
             />
 
-            <button onClick={ingresarComoInvitado} className="invite-button">
+            <button
+                onClick={ingresarComoInvitado}
+                className = {`invite-button ${nombreInvitado.trim() ? 'activo' : ''}`}
+            >
                 Ingresar como invitado
             </button>
         </div>
