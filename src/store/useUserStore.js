@@ -1,16 +1,18 @@
 import {create} from "zustand";
 
 const useUserStore = create((set) => ({
-  guestName: "",
   token: "",
   spotifyUser: null,
   setSpotifyUser: (user) => set({ spotifyUser: user }),
-  setGuestName: (name) => set({ guestName: name }),
-  setToken: (token) => {
-    set({ token });
-    localStorage.setItem("Spotify_token", token);
+  guestName: localStorage.getItem("guest_name") || "",
+  setGuestName: (name) => {
+    localStorage.setItem("guest_name", name);
+    set({ guestName: name });
   },
-  clearUser: () => set({ guestName: "", token: "", spotifyUser: null }),
+  clearUser: () => {
+    localStorage.removeItem("guest_name");
+    set({ guestName: "", token: "", spotifyUser: null });
+  },
 }));
 
 export default useUserStore;
