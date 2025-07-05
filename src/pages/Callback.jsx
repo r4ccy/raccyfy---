@@ -40,7 +40,7 @@ function Callback() {
         };
 
         obtenerToken();
-    }, []);
+    }, [navigate, params, setToken]);
 
     return (
         <div>
