@@ -7,7 +7,7 @@ function Home() {
     return (
         <div className="home">
             <h1>
-                holiii {guestName ? `(${guestName})` : token ? "(Spotify)" : ""}
+                holiii {guestName ? `${guestName}` : token ? "Spotify" : ""}
             </h1>
             <p>prueba 1</p>
         </div>
