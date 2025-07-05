@@ -5,12 +5,11 @@ import useUserStore from "../store/useUserStore";
 function Callback() {
     const [params] = useSearchParams();
     const navigate = useNavigate();
-    const { setToken } = useUserStore();
+    const { setToken, setSpotifyUser } = useUserStore();
 
     useEffect(() => {
         const code = params.get("code");
         const codeVerifier = localStorage.getItem("code_verifier");
-
         if (!code || !codeVerifier) return;
 
         const obtenerToken = async () => {
@@ -34,6 +33,17 @@ function Callback() {
             if (data.access_token) {
                 setToken(data.access_token);
                 localStorage.setItem("Spotify_token", data.access_token);
+
+                const perfiles = await fetch("https://api.spotify.com/v1/me", {
+                    headers: {
+                        Authorization: `Bearer ${data.access_token}`,
+                    },
+                });
+
+                const perfilData = await perfiles.json();
+                if (perfilData.display_name) {
+                    setSpotifyUser(perfilData);
+                }
                 navigate("/home");
             } else {
                 console.error("Error al obtener el token:", data);
@@ -41,7 +51,7 @@ function Callback() {
         };
 
         obtenerToken();
-    }, [navigate, params, setToken]);
+    }, [navigate, params, setToken, setSpotifyUser]);
 
     return (
         <div className="callback">
