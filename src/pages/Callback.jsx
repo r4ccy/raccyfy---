@@ -5,7 +5,7 @@ import useUserStore from "../store/useUserStore";
 function Callback() {
     const [params] = useSearchParams();
     const navigate = useNavigate();
-    const { setToken, setSpotifyUser } = useUserStore();
+    const { setToken, setSpotifyUser, clearUser } = useUserStore();
 
     useEffect(() => {
         const code = params.get("code");
@@ -42,6 +42,8 @@ function Callback() {
 
                 const perfilData = await perfiles.json();
                 if (perfilData.display_name) {
+                    clearUser();
+                    setToken(data.access_token);
                     setSpotifyUser(perfilData);
                 }
                 navigate("/home");
@@ -51,7 +53,7 @@ function Callback() {
         };
 
         obtenerToken();
-    }, [navigate, params, setToken, setSpotifyUser]);
+    }, [navigate, params, setToken, setSpotifyUser, clearUser]);
 
     return (
         <div className="callback">
