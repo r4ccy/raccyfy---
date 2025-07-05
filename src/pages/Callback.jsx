@@ -17,7 +17,7 @@ function Callback() {
             const body = new URLSearchParams({
                 grant_type: "authorization_code",
                 code: code,
-                redirect_uri: "https://zippy-unicorn-dcb83e.netlify.app/",
+                redirect_uri: "https://zippy-unicorn-dcb83e.netlify.app/callback",
                 client_id: "e083c518971545e686864f2cb358988b",
                 code_verifier: codeVerifier,
             });
@@ -33,6 +33,7 @@ function Callback() {
             const data = await res.json();
             if (data.access_token) {
                 setToken(data.access_token);
+                localStorage.setItem("Spotify_token", data.access_token);
                 navigate("/home");
             } else {
                 console.error("Error al obtener el token:", data);
@@ -43,9 +44,9 @@ function Callback() {
     }, [navigate, params, setToken]);
 
     return (
-        <div>
-            <h1>Callback</h1>
-            <p>Procesando...espere</p>
+        <div className="callback">
+            <h2>Iniciando sesión con Spotify</h2>
+            <p>Un momento, por favor...</p>
         </div>
     );
 }
