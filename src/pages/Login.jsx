@@ -39,6 +39,11 @@ return (
                 placeholder="Ingresa tu nombre"
                 value={nombreInvitado}
                 onChange={(e) => setNombreInvitado(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                        ingresarComoInvitado();
+                    }
+                }}
                 className="guest-input"
             />
 
