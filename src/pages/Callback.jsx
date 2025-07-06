@@ -10,7 +10,11 @@ function Callback() {
     useEffect(() => {
         const code = params.get("code");
         const codeVerifier = localStorage.getItem("code_verifier");
-        if (!code || !codeVerifier) return;
+
+        if (!code || !codeVerifier) {
+            console.error("Faltan parámetros necesarios");
+            return;
+        }
 
         const obtenerToken = async () => {
             const body = new URLSearchParams({
@@ -30,6 +34,7 @@ function Callback() {
             });
 
             const data = await res.json();
+
             if (data.access_token) {
                 setToken(data.access_token);
                 localStorage.setItem("Spotify_token", data.access_token);
