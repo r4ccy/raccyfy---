@@ -65,8 +65,14 @@
     z-index: 1100;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .sidebar {
-        width: 100%;
+        width: 60%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .sidebar {
+        width: 45%;
     }
 }
