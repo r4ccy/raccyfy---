@@ -71,9 +71,9 @@
         grid-template-rows: 60px 1fr 80px;
     }
 
-    .sidebar {
-        display: none; /* esconder barra lateral en móviles */
-    }
+/*    .sidebar {
+        display: none;
+    } ya se oculta con .oculto...*/
 
     .header {
         font-size: 1.2rem;
