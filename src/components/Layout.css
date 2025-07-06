@@ -139,9 +139,9 @@ html, body {
     transition: margin-left 0.3s ease-in-out;
 }
 
-.main-wrapper.shifted {
+/*.main-wrapper.shifted {
     margin-left: 220px;
-}
+}prueba*/
 
 .player {
     display: flex;

@@ -39,7 +39,7 @@ function Layout () {
             <aside className={`sidebar ${mostrarSidebar ? "visible" : ""}`}>
                 Biblioteca
             </aside>
-            <div className={`main-wrapper ${mostrarSidebar ? "shifted" : ""}`}>
+            <div className={`main-wrapper`}>
                 <header className="header">
                     parte spotifyUser
                 </header>
