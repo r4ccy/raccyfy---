@@ -134,11 +134,13 @@ html, body {
         "content"
         "footer";
     height: 100vh;
-    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease-in-out;
 }
 
 .main-wrapper.shifted {
-    transform: translateX(220px);
+    margin-left: 220px;
 }
 
 .player {
