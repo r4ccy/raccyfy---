@@ -1,15 +1,23 @@
-import {usarAutenticacionSpotify} from "../hooks/useSpotifyAuth.js";
+import React from "react";
 import useUserStore from "../store/useUserStore.js";   //no se lo importa con {}; {} -> nombre (algo especifico), sin {} -> todo lo que exporta el archivo
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import "./Login.css";
+import { buildSpotifyAuthUrl } from "../utils/pkce.js";
 
 function Login() {
-    const {iniciarSesionConSpotify} = usarAutenticacionSpotify();
     const {setGuestName} = useUserStore();
     const navigate = useNavigate();
     const [mostrarInput, setMostrarInput] = useState(false);
     const [nombreInvitado, setNombreInvitado] = useState("");
+
+    const handleLogin = async () => {
+    const clientId = "TU_CLIENT_ID_DE_SPOTIFY";
+    const redirectUri = "https://zippy-unicorn-dcb83e.netlify.app/";
+
+    const authUrl = await buildSpotifyAuthUrl(clientId, redirectUri);
+    window.location.href = authUrl;
+    };
 
     const ingresarComoInvitado = () => {
         console.log("posi"); //borrar luego
@@ -56,7 +64,7 @@ return (
         </div>
         )}
 
-            <button onClick={iniciarSesionConSpotify} className="spotify-button">
+            <button onClick={handleLogin} className="spotify-button">
             Ingresar con Spotify
         </button>
     </div>

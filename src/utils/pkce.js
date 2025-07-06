@@ -20,3 +20,23 @@ export function generateCodeVerifier(length = 128) {
     }
     return verifier;
 }
+
+export async function buildSpotifyAuthUrl(clientId, redirectUri) {
+    const verifier = generateCodeVerifier();
+    const challenge = await generateCodeChallenge(verifier);
+
+    localStorage.setItem("code_verifier", verifier);
+
+    const scopes = [
+        "user-read-playback-state",
+        "user-read-currently-playing"
+    ];
+
+    const scopeParam = scopes.join("%20");
+
+    const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
+        redirectUri
+    )}&scope=${scopeParam}&code_challenge_method=S256&code_challenge=${challenge}`;
+
+    return url;
+}
