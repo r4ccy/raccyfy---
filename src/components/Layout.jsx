@@ -12,7 +12,12 @@ function Layout () {
             </aside>
             <main className="main-section">
                 <header className="header">
-                    parte superior
+                    <button className = "menu-button"
+                        onClick={() => setMostrarSidebar(!mostrarSidebar)}
+                    >
+                        ☰
+                    </button>
+                    parte spotifyUser
                 </header>
             <section className="content">
                 <Outlet />
