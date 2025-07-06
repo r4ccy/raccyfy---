@@ -1,46 +1,42 @@
 .layout {
     display: grid;
     grid-template-areas:
-        "sidebar header"
-        "sidebar content"
-        "footer footer";
-    grid-template-columns: 200px 1fr;
+        "header"
+        "content"
+        "footer";
+    grid-template-columns: 1fr;
     grid-template-rows: 60px 1fr 80px;
     height: 100vh;
     background-color: #121212;
     color: white;
-    overflow: hidden;
+    position: relative;
     }
 
 .sidebar {
-    grid-area: sidebar;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
     background-color: #111;
     padding: 1rem;
-    height: 100%;
     color: #fff;
     overflow-y: auto;
-    transform: translateX(0);
-    transition: transform 0.3s ease-in-out;
-    z-index: 2;
-}
-
-/* mostrarSidebar = true -> visible, mostrarSidebar = false -> oculto */
-.sidebar.oculto {
     transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
 }
 
-.layout.sin-sidebar {
-    grid-template-areas:
-        "header header"
-        "content content"
-        "footer footer";
-    grid-template-columns: 1fr;
+.sidebar.visible {
+    transform: translateX(0);
 }
 
 .header {
     grid-area: header;
     background-color: #1e1e1e;
     padding: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .content {
@@ -66,33 +62,11 @@
     font-size: 1.5rem;
     cursor: pointer;
     margin-right: 1rem;
+    z-index: 1100;
 }
 
-@media (max-width: 360px) { /* móvil */
-    .layout {
-        grid-template-areas: 
-            "header"
-            "content"
-            "footer";
-        grid-template-columns: 1fr;
-        grid-template-rows: 60px 1fr 80px;
-    }
-
-/*    .sidebar {
-        display: none;
-    } ya se oculta con .oculto...*/
-
-    .header {
-        font-size: 1.2rem;
-        padding: 0.5rem;
-    }
-
-    .content {
-        padding: 1rem 0.5rem;
-    }
-
-    .footer {
-        font-size: 0.9rem;
-        padding: 0.5rem;
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
     }
 }

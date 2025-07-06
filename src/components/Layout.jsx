@@ -7,11 +7,8 @@ function Layout () {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth > 768) {
-                setMostrarSidebar(true);
-            } else {
-                setMostrarSidebar(false);
-            }
+            const isLarge=window.innerWidth > 768;
+            setMostrarSidebar(isLarge);
         };
 
         window.addEventListener("resize", handleResize);
@@ -21,23 +18,21 @@ function Layout () {
     }, []);
 
     return (
-        <div className={`layout ${mostrarSidebar ? "" : "sin-sidebar"}`}>
-            <aside className={`sidebar ${mostrarSidebar ? "visible" : "oculto"}`}>
+        <div className="layout">
+            <aside className={`sidebar ${mostrarSidebar ? "visible" : ""}`}>
                 barra lateral
             </aside>
-            <main className="main-section">
-                <header className="header">
-                    <button className = "menu-button"
-                        onClick={() => setMostrarSidebar(!mostrarSidebar)}
+            <header className="header">
+                <button className = "menu-button"
+                    onClick={() => setMostrarSidebar(!mostrarSidebar)}
                     >
                         ☰
-                    </button>
+                </button>
                     parte spotifyUser
-                </header>
+            </header>
             <section className="content">
                 <Outlet />
             </section>
-            </main>
             <footer className="footer">
                 reproductor de musica
             </footer>
