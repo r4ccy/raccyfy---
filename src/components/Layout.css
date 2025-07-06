@@ -1,6 +1,6 @@
 .layout {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "sidebar header"
         "sidebar content"
         "footer footer";
@@ -12,19 +12,38 @@
 .sidebar {
     grid-area: sidebar;
     background-color: #1e1e1e;
+    padding: 1rem;
 }
 
 .header {
     grid-area: header;
     background-color: #282828;
+    padding: 1rem;
 }
 
 .content {
     grid-area: content;
     padding: 1rem;
+    overflow-y: auto;
 }
 
 .footer {
     grid-area: footer;
     background-color: #1e1e1e;
+    padding: 1rem;
+}
+
+@media (max-width: 768px) { /* móvil */
+    .layout {
+        grid-template-areas:
+            "header"
+            "content"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .sidebar {
+        display: none; /* esconder barra lateral en móviles */
+    }
 }
