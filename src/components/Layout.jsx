@@ -67,7 +67,7 @@ function Layout () {
                                 </button>
                             </div>
 
-                            <div className="player-righr progress">
+                            <div className="player-right progress">
                                 <span className="time">{formatTime(track.progress)}</span>
                                 <div className="bar-container">
                                     <div
