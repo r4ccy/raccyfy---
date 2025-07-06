@@ -36,9 +36,32 @@ function Layout () {
             >
                 ☰
             </button>
+
             <aside className={`sidebar ${mostrarSidebar ? "visible" : ""}`}>
-                Biblioteca
-            </aside>
+
+            <h2
+                className="sidebar-title">
+                    Biblioteca
+            </h2>
+
+            <ul className="sidebar-list">
+                <li className="sidebar-item">Mis favoritas</li>
+                <li className="sidebar-item">Workout Mix</li>
+                <li className="sidebar-item">Lo-fi Chill</li>
+            </ul>
+
+            <h3
+                className="sidebar-subtitle">
+                    Artistas
+            </h3>
+
+            <ul className="sidebar-list">
+                <li className="sidebar-item">Arctic Monkeys</li>
+                <li className="sidebar-item">Bad Bunny</li>
+                <li className="sidebar-item">Taylor Swift</li>
+            </ul>
+        </aside>
+
             <div className={`main-wrapper`}>
                 <header className="header">
                     parte spotifyUser
