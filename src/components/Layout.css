@@ -59,6 +59,15 @@ html, body {
     margin: 0.5rem 0;
 }
 
+.sidebar-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
 .sidebar-item {
     display: flex;
     align-items: center;

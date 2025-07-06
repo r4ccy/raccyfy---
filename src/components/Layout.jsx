@@ -52,7 +52,10 @@ function Layout () {
                 {playlists.length > 0 ? (
                     playlists.map((playlist) => (
                         <li key={playlist.id} className="sidebar-item">
-                            {playlist.name}
+                            {playlist.name && (
+                                <img src={playlist.image} alt={playlist.name} className="sidebar-image" />
+                            )}
+                            <span>{playlist.name}</span>
                         </li>
                     ))
                 ):(
@@ -69,7 +72,9 @@ function Layout () {
                 {artists.length > 0 ? (
                     artists.map((artist) => (
                         <li key={artist.id} className="sidebar-item">
-                            {artist.name}
+                            {artist.name && (
+                                <img src={artist.name} alt={artist.name} className="sidebar-image" />
+                            )}
                         </li>
                     ))
                 ):(
