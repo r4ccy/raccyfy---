@@ -27,7 +27,7 @@ html, body {
     width: 220px;
     height: 100%;
     background-color: #111;
-    padding: 4rem 1rem 1rem;
+    padding: 1rem 1rem 4rem;
     color: #fff;
     overflow-y: auto;
     transform: translateX(-100%);
@@ -60,16 +60,35 @@ html, body {
 }
 
 .sidebar-item {
+    display: flex;
+    align-items: center;
     padding: 0.4rem 0.5rem;
     font-size: 0.95rem;
     cursor: pointer;
     color: #ccc;
     transition: background 0.2s;
+    gap: 0.5rem;
+    border-radius: 4px;
 }
 
 .sidebar-item:hover {
     background-color: #222;
     color: white;
+}
+
+.sidebar-item .item-thumb {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    object-fit: cover;
+    background-color: #333;
+    flex-shrink: 0;
+}
+
+.sidebar-item .item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .header {
