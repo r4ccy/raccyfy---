@@ -49,12 +49,15 @@ function Layout () {
                 <footer className="footer">
                     {track ? (
                         <div className="player">
+                            <div className="player-left">
                             <img src={track.image} alt="cover" className="cover" />
                             <div className="info">
                                 <div className="name">{track.title}</div>
                                 <div className="artist">{track.artist}</div>
                             </div>
-                            <div className="controls">
+                            </div>
+
+                            <div className="player-center controls">
                                 <button className="control-button">
                                     ⏮
                                 </button>
@@ -63,7 +66,8 @@ function Layout () {
                                     ⏭
                                 </button>
                             </div>
-                            <div className="progress">
+
+                            <div className="player-righr progress">
                                 <span className="time">{formatTime(track.progress)}</span>
                                 <div className="bar-container">
                                     <div
