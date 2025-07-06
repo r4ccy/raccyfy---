@@ -6,7 +6,7 @@ import useUserStore from "../store/useUserStore";
 
 function Layout () {
     const [mostrarSidebar, setMostrarSidebar] = useState(window.innerWidth > 768);
-    const token = useUserStore((state) => state.token);
+    const {token} = useUserStore();
     const track = useSpotifyPlayer(token);
 
     useEffect(() => {
@@ -20,6 +20,14 @@ function Layout () {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+
+    function formatTime(ms) {
+        const minutes = Math.floor(ms/60000);
+        const seconds = Math.floor((ms % 60000) / 1000)
+            .toString()
+            .padStart(2, "0");
+        return `${minutes}:${seconds}`;
+    }
 
     return (
         <div className="layout">
@@ -38,16 +46,41 @@ function Layout () {
                 <section className="content">
                     <Outlet />
                 </section>
-                <footer className="footer"> {
-                        track ? (
-                            <>
-                                <p>{track.title}</p>
-                                <p style={{ fontSize: "0.8rem", color: "#aaa" }}>{track.artist}</p>
-                            </>
+                <footer className="footer">
+                    {track ? (
+                        <div className="player">
+                            <img src={track.image} alt="cover" className="cover" />
+                            <div className="info">
+                                <div className="name">{track.title}</div>
+                                <div className="artist">{track.artist}</div>
+                            </div>
+                            <div className="controls">
+                                <button className="control-button">
+                                    ⏮
+                                </button>
+                                <button className="control-button">{track.isPlaying ? "⏸" : "▶️"}</button>
+                                <button className="control-button">
+                                    ⏭
+                                </button>
+                            </div>
+                            <div className="progress">
+                                <span className="time">{formatTime(track.progress)}</span>
+                                <div className="bar-container">
+                                    <div
+                                        className="bar"
+                                        style={{
+                                            width: `${(track.progress / track.duration) * 100}%`,
+                                        }}
+                                    />
+                                </div>
+                                <span className="time">{formatTime(track.duration)}</span>
+                            </div>
+                        </div>
                         ) : (
-                            "reproductor de musica"
-                        )
-                    }
+                        <span>
+                            𝄪 ✧˖° 🦝♪ °˖✧ 𝄪
+                        </span>
+                    )}
                 </footer>
             </div>
         </div>
