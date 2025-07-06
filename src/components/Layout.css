@@ -30,6 +30,14 @@
     overflow: hidden;
 }
 
+.layout.sin-sidebar {
+    grid-template-areas:
+        "header header"
+        "content content"
+        "footer footer";
+    grid-template-columns: 1fr;
+}
+
 .header {
     grid-area: header;
     background-color: #1e1e1e;

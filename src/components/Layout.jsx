@@ -21,7 +21,7 @@ function Layout () {
     }, []);
 
     return (
-        <div className="layout">
+        <div className={`layout ${mostrarSidebar ? "" : "sin-sidebar"}`}>
             <aside className={`sidebar ${mostrarSidebar ? "visible" : "oculto"}`}>
                 barra lateral
             </aside>
