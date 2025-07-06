@@ -46,7 +46,7 @@ function Layout () {
                 <section className="content">
                     <Outlet />
                 </section>
-                <footer className="footer">
+                <footer className={`footer ${mostrarSidebar ? "sidebar-visible" : ""}`}>
                     {track ? (
                         <div className="player">
                             <div className="player-left">

@@ -106,6 +106,10 @@ html, body {
     text-overflow: ellipsis;
 }
 
+.footer.sidebar-visible .player-left {
+    margin-left: 220px;
+}
+
 .menu-button {
     position: fixed;
     top: 1rem;
@@ -251,5 +255,11 @@ html, body {
 @media (min-width: 481px) and (max-width: 768px) {
     .sidebar {
         width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer.sidebar-visible .player-left {
+        margin-left: 0;
     }
 }
