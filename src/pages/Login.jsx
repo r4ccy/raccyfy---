@@ -12,8 +12,8 @@ function Login() {
     const [nombreInvitado, setNombreInvitado] = useState("");
 
     const handleLogin = async () => {
-    const clientId = "TU_CLIENT_ID_DE_SPOTIFY";
-    const redirectUri = "https://zippy-unicorn-dcb83e.netlify.app/";
+    const clientId = "e083c518971545e686864f2cb358988b";
+    const redirectUri = "https://zippy-unicorn-dcb83e.netlify.app/callback";
 
     const authUrl = await buildSpotifyAuthUrl(clientId, redirectUri);
     window.location.href = authUrl;
