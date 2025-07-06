@@ -1,4 +1,5 @@
-import "Layout.css";
+import "./Layout.css";
+import {Outlet} from "react-router-dom";
 
 function Layout () {
     return (
@@ -11,7 +12,7 @@ function Layout () {
                     parte superior
                 </header>
             <section className="content">
-                contenido principal (musica)
+                <Outlet />
             </section>
             </main>
             <footer className="footer">
