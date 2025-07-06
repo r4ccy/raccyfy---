@@ -224,14 +224,25 @@ html, body {
         padding: 0.3rem 0.6rem;
     }
 
-    .player-center.controls {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-    }
-
     .player-right.progress {
         display: none;
+    }
+
+    .progress {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .bar-container{
+        width: 100%;
+    max-width: 200px;
+    margin: 0.3rem 0;
+    }
+
+    .time {
+        font-size: 0.7rem;
     }
 }
 
