@@ -1,7 +1,10 @@
 import "./Layout.css";
 import {Outlet} from "react-router-dom";
+import { useState } from "react";
 
 function Layout () {
+    const [mostrarSidebar, setMostrarSidebar] = useState(false);
+
     return (
         <div className="layout">
             <aside className="sidebar">
