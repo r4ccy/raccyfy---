@@ -13,11 +13,21 @@
     }
 
 .sidebar {
+    transition: all 0.3s ease;
+    width: 220px;
     grid-area: sidebar;
     background-color: #111;
     padding: 1rem;
+    height: 100%;
     color: #fff;
     overflow-y: auto;
+}
+
+/* mostrarSidebar = true -> visible, mostrarSidebar = false -> oculto */
+.sidebar.oculto {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .header {
@@ -53,16 +63,16 @@
 
 @media (max-width: 360px) { /* móvil */
     .layout {
-        flex-direction: column;
-        padding: 0.5rem;
+        grid-template-areas: 
+            "header"
+            "content"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 1fr 80px;
     }
 
     .sidebar {
         display: none; /* esconder barra lateral en móviles */
-    }
-
-    .main-section {
-        width: 100%;
     }
 
     .header {

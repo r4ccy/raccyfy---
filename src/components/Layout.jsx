@@ -7,7 +7,7 @@ function Layout () {
 
     return (
         <div className="layout">
-            <aside className="sidebar">
+            <aside className={`sidebar ${mostrarSidebar ? "visible" : "oculto"}`}>
                 barra lateral
             </aside>
             <main className="main-section">
