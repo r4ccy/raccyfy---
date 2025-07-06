@@ -10,6 +10,8 @@
     background-color: #121212;
     color: white;
     position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
     }
 
 .sidebar {
@@ -41,9 +43,9 @@
 
 .content {
     grid-area: content;
-    padding: 1rem;
     overflow-y: auto;
     background-color: #121212;
+    max-height: calc(100vh - 140px); /* 60px header + 80px footer */
 }
 
 .footer {
@@ -56,13 +58,23 @@
 }
 
 .menu-button {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
     background: none;
     border: none;
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-    margin-right: 1rem;
     z-index: 1100;
+}
+
+.main-wrapper {
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-wrapper.shifted {
+    transform: translateX(220px);
 }
 
 @media (max-width: 480px) {

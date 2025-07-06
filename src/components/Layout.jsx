@@ -19,16 +19,20 @@ function Layout () {
 
     return (
         <div className="layout">
-            <aside className={`sidebar ${mostrarSidebar ? "visible" : ""}`}>
-                barra lateral
-            </aside>
-            <header className="header">
                 <button className = "menu-button"
                     onClick={() => setMostrarSidebar(!mostrarSidebar)}
                     >
                         ☰
                 </button>
-                    parte spotifyUser
+                <aside className={`sidebar ${mostrarSidebar ? "visible" : ""}`}>
+                    barra lateral
+                </aside>
+            <aside className={`sidebar ${mostrarSidebar ? "visible" : ""}`}>
+                barra lateral
+            </aside>
+            <div className={`main-wrapper ${mostrarSidebar ? "shifted" : ""}`}>
+            <header className="header">
+                parte spotifyUser
             </header>
             <section className="content">
                 <Outlet />
@@ -36,6 +40,7 @@ function Layout () {
             <footer className="footer">
                 reproductor de musica
             </footer>
+            </div>
         </div>
     );
 }
