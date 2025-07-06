@@ -29,10 +29,12 @@ export async function buildSpotifyAuthUrl(clientId, redirectUri) {
 
     const scopes = [
         "user-read-playback-state",
-        "user-read-currently-playing"
+        "user-read-currently-playing",
+        "playlist-read-private",
+        "user-follow-read"
     ];
 
-    const scopeParam = scopes.join("%20");
+    const scopeParam = scopes.join("");
 
     const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
         redirectUri

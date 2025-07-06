@@ -3,11 +3,15 @@ import {Outlet} from "react-router-dom";
 import { useEffect, useState } from "react";
 import useSpotifyPlayer from "../hooks/useSpotifyPlayer";
 import useUserStore from "../store/useUserStore";
+import useSpotifyLibrary from "../hooks/useSpotifyLibrary";
+
 
 function Layout () {
     const [mostrarSidebar, setMostrarSidebar] = useState(window.innerWidth > 768);
     const {token} = useUserStore();
     const track = useSpotifyPlayer(token);
+    const { playlists, artists } = useSpotifyLibrary(token);
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -45,9 +49,15 @@ function Layout () {
             </h2>
 
             <ul className="sidebar-list">
-                <li className="sidebar-item">Mis favoritas</li>
-                <li className="sidebar-item">Workout Mix</li>
-                <li className="sidebar-item">Lo-fi Chill</li>
+                {playlists.length > 0 ? (
+                    playlists.map((playlist) => (
+                        <li key={playlist.id} className="sidebar-item">
+                            {playlist.name}
+                        </li>
+                    ))
+                ):(
+                    <li className="sidebar-item">Cargando playlists...</li>
+                )}
             </ul>
 
             <h3
@@ -56,9 +66,15 @@ function Layout () {
             </h3>
 
             <ul className="sidebar-list">
-                <li className="sidebar-item">Arctic Monkeys</li>
-                <li className="sidebar-item">Bad Bunny</li>
-                <li className="sidebar-item">Taylor Swift</li>
+                {artists.length > 0 ? (
+                    artists.map((artist) => (
+                        <li key={artist.id} className="sidebar-item">
+                            {artist.name}
+                        </li>
+                    ))
+                ):(
+                    <li className="sidebar-item">Cargando artistas...</li>
+                )}
             </ul>
         </aside>
 
