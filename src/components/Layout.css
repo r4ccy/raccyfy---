@@ -4,14 +4,12 @@
         "header"
         "content"
         "footer";
-    grid-template-columns: 1fr;
     grid-template-rows: 60px 1fr 80px;
     height: 100vh;
     background-color: #121212;
     color: white;
     position: relative;
     overflow-x: hidden;
-    overflow-y: hidden;
     }
 
 .sidebar {
@@ -31,6 +29,7 @@
 
 .sidebar.visible {
     transform: translateX(0);
+    width: 220px;
 }
 
 .header {
@@ -43,9 +42,11 @@
 
 .content {
     grid-area: content;
+    padding: 1rem;
+    min-height: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: #121212;
-    max-height: calc(100vh - 140px); /* 60px header + 80px footer */
 }
 
 .footer {
@@ -70,7 +71,15 @@
 }
 
 .main-wrapper {
+    display: grid;
+    grid-template-rows: 60px 1fr 80px;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    height: 100vh;
     transition: transform 0.3s ease-in-out;
+    overflow: hidden;
 }
 
 .main-wrapper.shifted {
