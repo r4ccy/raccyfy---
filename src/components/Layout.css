@@ -7,16 +7,15 @@ html, body {
 
 .layout {
     display: grid;
+    grid-template-rows: 60px 1fr 80px;
     grid-template-areas:
         "header"
         "content"
         "footer";
-    grid-template-rows: 60px 1fr 80px;
     height: 100vh;
     max-width: 100vw;
     background-color: #121212;
     color: white;
-    position: relative;
     overflow: hidden;
     }
 
@@ -196,16 +195,7 @@ html, body {
 }
 
 .main-wrapper {
-    display: grid;
-    grid-template-rows: 60px 1fr 80px;
-    grid-template-areas:
-        "header"
-        "content"
-        "footer";
-    height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
-    transition: margin-left 0.3s ease-in-out;
+    display: contents;
 }
 
 .player {
