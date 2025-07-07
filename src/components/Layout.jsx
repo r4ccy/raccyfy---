@@ -12,13 +12,13 @@ function Layout () {
     const {token, user, clearUser} = useUserStore();
     const track = useSpotifyPlayer(token);
     const { playlists, artists } = useSpotifyLibrary(token);
-    const topTracksHistory = useTopTracksHistory(token);
+    const { history: topTracksHistory, genresPerYear } = useTopTracksHistory(token);
 
-const cerrarSesion = () => {
-    clearUser();
-    localStorage.clear();
-    window.location.href = "/";
-};
+    const cerrarSesion = () => {
+        clearUser();
+        localStorage.clear();
+        window.location.href = "/";
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -114,7 +114,7 @@ const cerrarSesion = () => {
                 <section className="content">
                     <Outlet />
                     <div className="timeline-container" key={topTracksHistory.length}>
-                        <MusicalTimeline history={topTracksHistory} />
+                        <MusicalTimeline history={topTracksHistory} genresPerYear={genresPerYear} />
                     </div>
                 </section>
                 <footer className={`footer ${mostrarSidebar ? "sidebar-visible" : ""}`}>
