@@ -171,15 +171,17 @@ html, body {
 }
 
 .menu-button {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    background: none;
-    border: none;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #111;  /* Fondo acorde a la sidebar */
     color: white;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
     font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 1100;
 }
 
 .control-button {
