@@ -35,12 +35,13 @@ function Layout () {
 
     return (
         <div className="layout">
-            <aside className={`sidebar ${mostrarSidebar ? "visible" : ""}`}>
             <button className = "menu-button"
                 onClick={() => setMostrarSidebar(!mostrarSidebar)}
             >
                 ☰
             </button>
+
+            <aside className={`sidebar ${mostrarSidebar ? "visible" : "oculto"}`}>
 
             <h2
                 className="sidebar-title">

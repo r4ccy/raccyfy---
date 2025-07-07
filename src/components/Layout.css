@@ -21,23 +21,23 @@ html, body {
     }
 
 .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 220px;
+    width: 240px;
     height: 100%;
     background-color: #111;
-    padding: 1rem 1rem 4rem;
-    color: #fff;
     overflow-y: auto;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
+    transition: transform 0.3s ease;
+    z-index: 15;
 }
 
 .sidebar.visible {
     transform: translateX(0);
-    width: 220px;
+}
+
+.sidebar.oculto {
+    transform: translateX(-100%);
 }
 
 .sidebar-title {
@@ -171,17 +171,18 @@ html, body {
 }
 
 .menu-button {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: #111;  /* Fondo acorde a la sidebar */
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 20;
+    background-color: #111;
     color: white;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    text-align: left;
     border: none;
-    outline: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
     font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .control-button {
