@@ -1,6 +1,14 @@
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
-import { ResponsiveContainer } from "recharts";
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    ResponsiveContainer,
+} from "recharts";
 
 function MusicalTimeline({ history, genresPerYear }) {
     if (!history || history.length === 0) {
@@ -25,13 +33,28 @@ function MusicalTimeline({ history, genresPerYear }) {
     data.sort((a, b) => a.year - b.year);
 
     return (
-        <div style={{ width: "100%", height: 300 }}>
-            <h2 className="text-xl text-center text-white mb-4">Líneas de Tiempo Musical 🎶</h2>
-            <ResponsiveContainer width="100%" height={300}>
+        <div style={{ width: "100%", height: 500 }}>
+            <h2 className="text-2xl text-center text-white mb-6">Líneas de Tiempo Musical 🎶</h2>
+            <ResponsiveContainer width="100%" height={500}>
                 <LineChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" stroke="#ccc" />
-                    <YAxis stroke="#ccc" />
+                    <XAxis
+                        dataKey="year"
+                        stroke="#ccc"
+                        tick={{ fontSize: 14, fill: "#ccc" }}
+                        label={{ value: "Año", position: "insideBottom", offset: -5, fill: "#ccc" }}
+                    />
+                    <YAxis
+                        stroke="#ccc"
+                        tick={{ fontSize: 14, fill: "#ccc" }}
+                        label={{
+                            value: "Canciones",
+                            angle: -90,
+                            position: "insideLeft",
+                            offset: 10,
+                            fill: "#ccc",
+                        }}
+                    />
                     <Tooltip
                         content={({ active, payload, label }) => {
                             if (active && payload && payload.length) {
@@ -47,8 +70,15 @@ function MusicalTimeline({ history, genresPerYear }) {
                             return null;
                         }}
                     />
-                    <Legend />
-                    <Line type="monotone" dataKey="count" name="Canciones favoritas" stroke="#82ca9d" />
+                    <Legend wrapperStyle={{ fontSize: 14, color: "#fff" }} />
+                    <Line
+                        type="monotone"
+                        dataKey="count"
+                        name="Canciones favoritas"
+                        stroke="#82ca9d"
+                        strokeWidth={2}
+                        dot={{ r: 4 }}
+                    />
                 </LineChart>
             </ResponsiveContainer>
         </div>
