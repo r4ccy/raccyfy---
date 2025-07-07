@@ -21,15 +21,15 @@ function useSpotifyLibrary(token) {
                     image: playlist.images[0]?.url || null
                 }));
                 setPlaylists(formattedPlaylists);
-        } catch (error) {
-            console.error("Error fetching playlists:", error);
-        }
+            } catch (error) {
+                console.error("Error fetching playlists:", error);
+            }
         };
 
         const fetchArtists = async () => {
             try {
                 const res = await axios.get("https://api.spotify.com/v1/me/top/artists?limit=20", { headers });
-                const formattedArtists = res.data.artists.items.map((artist) => ({
+                const formattedArtists = res.data.items.map((artist) => ({
                     id: artist.id,
                     name: artist.name,
                     image: artist.images[0]?.url || null
@@ -42,9 +42,9 @@ function useSpotifyLibrary(token) {
 
         fetchPlaylists();
         fetchArtists();
-        }, [token]);
+    }, [token]);
 
-        return { playlists, artists };
-    }
+    return { playlists, artists };
+}
 
 export default useSpotifyLibrary;
