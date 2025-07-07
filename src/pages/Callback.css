@@ -6,22 +6,44 @@
     min-height: 100vh;
     text-align: center;
     background-color: #121212;
-    color: white;
+    color: #fff;
     padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.callback h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
 .loader {
     margin-top: 1.5rem;
-    border: 8px solid #1db954;
-    border-top: 4px solid transparent;
+    border: 6px solid #1db954;
+    border-top: 6px solid transparent;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        color: #1db954;
+    }
+    50% {
+        transform: scale(1.1);
+        color: #1ed760;
+    }
+    100% {
+        transform: scale(1);
+        color: #1db954;
     }
 }
