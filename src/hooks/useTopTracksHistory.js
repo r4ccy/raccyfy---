@@ -3,14 +3,10 @@ import axios from "axios";
 
 function useTopTracksHistory(token) {
     const [history, setHistory] = useState([]);
+    const [genresPerYear, setGenresPerYear] = useState({});
 
     useEffect(() => {
-        if (!token) {
-            console.log("Token aún no disponible");
-            return;
-        }
-
-        console.log("Token disponible:", token);
+        if (!token) return;
 
         const headers = { Authorization: `Bearer ${token}` };
 
@@ -22,22 +18,57 @@ function useTopTracksHistory(token) {
                 );
 
                 const items = res.data.items;
-                console.log("Top tracks recibidos:", items);
-
                 if (!items || items.length === 0) {
                     console.warn("No se encontraron canciones favoritas a largo plazo.");
                     setHistory([]);
                     return;
                 }
 
-                const tracks = items.map((track) => ({
-                    id: track.id,
-                    name: track.name,
-                    artist: track.artists[0].name,
-                    date: new Date(track.album.release_date).getFullYear(),
-                }));
+                const yearGenreMap = {};
+                const processedTracks = [];
 
-                setHistory(tracks);
+                for (const track of items) {
+                    const year = new Date(track.album.release_date).getFullYear();
+                    const artistId = track.artists[0]?.id;
+
+                    // Guardamos los datos básicos del track
+                    processedTracks.push({
+                        id: track.id,
+                        name: track.name,
+                        artist: track.artists[0]?.name,
+                        date: year,
+                    });
+
+                    // Obtenemos los géneros del artista
+                    if (artistId) {
+                        try {
+                            const artistRes = await axios.get(
+                                `https://api.spotify.com/v1/artists/${artistId}`,
+                                { headers }
+                            );
+
+                            const genres = artistRes.data.genres;
+
+                            if (!yearGenreMap[year]) yearGenreMap[year] = {};
+                            for (const genre of genres) {
+                                yearGenreMap[year][genre] = (yearGenreMap[year][genre] || 0) + 1;
+                            }
+                        } catch (error) {
+                            console.warn(`Error obteniendo géneros del artista ${artistId}:`, error.message);
+                        }
+                    }
+                }
+
+                // Calculamos el género más frecuente por año
+                const dominantGenres = {};
+                for (const year in yearGenreMap) {
+                    const genres = yearGenreMap[year];
+                    const topGenre = Object.entries(genres).reduce((a, b) => (b[1] > a[1] ? b : a));
+                    dominantGenres[year] = topGenre[0];
+                }
+
+                setHistory(processedTracks);
+                setGenresPerYear(dominantGenres);
             } catch (error) {
                 console.error("Error fetching top tracks:", error);
             }
@@ -46,7 +77,7 @@ function useTopTracksHistory(token) {
         fetchTopTracks();
     }, [token]);
 
-    return history;
+    return { history, genresPerYear };
 }
 
 export default useTopTracksHistory;
