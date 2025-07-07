@@ -28,7 +28,7 @@ function useSpotifyLibrary(token) {
 
         const fetchArtists = async () => {
             try {
-                const res = await axios.get("https://api.spotify.com/v1/me/following?type=artist&limit=20", { headers });
+                const res = await axios.get("https://api.spotify.com/v1/me/top/artists?limit=20", { headers });
                 const formattedArtists = res.data.artists.items.map((artist) => ({
                     id: artist.id,
                     name: artist.name,
