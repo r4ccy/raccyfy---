@@ -26,6 +26,7 @@ export function usarAutenticacionSpotify() {
       SCOPES
     )}&code_challenge_method=S256&code_challenge=${desafio}`;
 
+    console.log("🔗 urlDeLogin:", urlDeLogin);
     window.location.href = urlDeLogin;
   };
 
