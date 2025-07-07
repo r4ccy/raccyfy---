@@ -34,7 +34,9 @@ export async function buildSpotifyAuthUrl(clientId, redirectUri) {
         "user-follow-read"
     ];
 
-    const scopeParam = scopes.join("");
+    const scopeParam = scopes
+        .filter(scope => scope !== "user-follow-read")
+        .join(" ");
 
     const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
         redirectUri
