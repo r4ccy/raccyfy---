@@ -35,7 +35,7 @@ return (
         <p>Zzzzz...</p>
 
         {!mostrarInput ? (
-            <button onClick={() => setMostrarInput(true)} 
+            <button onClick={() => setMostrarInput(true)}
             className="guest-button"
             >
                 Ingresar como invitado
