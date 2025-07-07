@@ -77,7 +77,8 @@ function Layout () {
                     artists.map((artist) => (
                         <li key={artist.id} className="sidebar-item">
                             {artist.image && (
-                                <img src={artist.name}
+                                <img
+                                    src={artist.image}
                                     alt={artist.name}
                                     className="sidebar-image"
                                 />
