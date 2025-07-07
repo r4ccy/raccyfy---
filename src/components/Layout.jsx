@@ -113,7 +113,7 @@ const cerrarSesion = () => {
                 </header>
                 <section className="content">
                     <Outlet />
-                    <div className="timeline-container">
+                    <div className="timeline-container" key={topTracksHistory.length}>
                         <MusicalTimeline history={topTracksHistory} />
                     </div>
                 </section>
