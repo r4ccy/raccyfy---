@@ -28,15 +28,18 @@ export async function buildSpotifyAuthUrl(clientId, redirectUri) {
     localStorage.setItem("code_verifier", verifier);
 
     const scopes = [
+        "user-read-private",
+        "user-read-email",
+        "user-top-read",
+        "playlist-read-private",
+        "playlist-read-collaborative",
+        "user-library-read",
         "user-read-playback-state",
         "user-read-currently-playing",
-        "playlist-read-private",
         "user-follow-read"
     ];
 
-    const scopeParam = scopes
-        .filter(scope => scope !== "user-follow-read")
-        .join(" ");
+    const scopeParam = scopes.join(" ");
 
     const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(
         redirectUri

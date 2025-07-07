@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login.jsx';
 import Home from './pages/Home.jsx';
@@ -5,6 +6,11 @@ import Callback from './pages/Callback.jsx';
 import Layout from './components/Layout.jsx';
 
 function App(){
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
   return (
     <Router>
       <Routes>
