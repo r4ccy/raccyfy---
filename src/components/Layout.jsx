@@ -4,13 +4,16 @@ import { useEffect, useState } from "react";
 import useSpotifyPlayer from "../hooks/useSpotifyPlayer";
 import useUserStore from "../store/useUserStore";
 import useSpotifyLibrary from "../hooks/useSpotifyLibrary";
-
+import useTopTracksHistory from "../hooks/useTopTracksHistory";
+import MusicalTimeline from "../components/MusicalTimeline";
 
 function Layout () {
     const [mostrarSidebar, setMostrarSidebar] = useState(window.innerWidth > 768);
     const {token} = useUserStore();
     const track = useSpotifyPlayer(token);
     const { playlists, artists } = useSpotifyLibrary(token);
+    const topTracksHistory = useTopTracksHistory(token);
+
 
 
     useEffect(() => {
@@ -98,6 +101,9 @@ function Layout () {
                 </header>
                 <section className="content">
                     <Outlet />
+                    <div className="timeline-container">
+                        <MusicalTimeline history={topTracksHistory} />
+                    </div>
                 </section>
                 <footer className={`footer ${mostrarSidebar ? "sidebar-visible" : ""}`}>
                     {track ? (

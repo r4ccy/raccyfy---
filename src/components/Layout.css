@@ -206,10 +206,6 @@ html, body {
     transition: margin-left 0.3s ease-in-out;
 }
 
-/*.main-wrapper.shifted {
-    margin-left: 220px;
-}prueba*/
-
 .player {
     display: flex;
     justify-content: space-between;
@@ -257,6 +253,12 @@ html, body {
 .time {
     font-size: 0.8rem;
     color: #ccc;
+}
+
+.timeline-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 480px) {
