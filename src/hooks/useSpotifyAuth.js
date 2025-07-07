@@ -9,7 +9,9 @@ export function usarAutenticacionSpotify() {
     "user-top-read",
     "playlist-read-private",
     "playlist-read-collaborative",
-    "user-library-read"
+    "user-library-read",
+    "user-read-playback-state",
+    "user-read-currently-playing"
   ].join(" ");
 
   const iniciarSesionConSpotify = async () => {
