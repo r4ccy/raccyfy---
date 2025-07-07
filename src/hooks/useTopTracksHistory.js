@@ -19,7 +19,6 @@ function useTopTracksHistory(token) {
 
                 const items = res.data.items;
                 if (!items || items.length === 0) {
-                    console.warn("No se encontraron canciones favoritas a largo plazo.");
                     setHistory([]);
                     return;
                 }
@@ -31,7 +30,6 @@ function useTopTracksHistory(token) {
                     const year = new Date(track.album.release_date).getFullYear();
                     const artistId = track.artists[0]?.id;
 
-                    // Guardamos los datos básicos del track
                     processedTracks.push({
                         id: track.id,
                         name: track.name,
@@ -39,7 +37,6 @@ function useTopTracksHistory(token) {
                         date: year,
                     });
 
-                    // Obtenemos los géneros del artista
                     if (artistId) {
                         try {
                             const artistRes = await axios.get(
@@ -59,12 +56,13 @@ function useTopTracksHistory(token) {
                     }
                 }
 
-                // Calculamos el género más frecuente por año
                 const dominantGenres = {};
                 for (const year in yearGenreMap) {
-                    const genres = yearGenreMap[year];
-                    const topGenre = Object.entries(genres).reduce((a, b) => (b[1] > a[1] ? b : a));
-                    dominantGenres[year] = topGenre[0];
+                    const entries = Object.entries(yearGenreMap[year]);
+                    if (entries.length > 0) {
+                        const [topGenre] = entries.reduce((a, b) => (b[1] > a[1] ? b : a));
+                        dominantGenres[year] = topGenre;
+                    }
                 }
 
                 setHistory(processedTracks);
