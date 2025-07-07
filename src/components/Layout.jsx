@@ -9,12 +9,16 @@ import MusicalTimeline from "../components/MusicalTimeline";
 
 function Layout () {
     const [mostrarSidebar, setMostrarSidebar] = useState(window.innerWidth > 768);
-    const {token} = useUserStore();
+    const {token, user, clearUser} = useUserStore();
     const track = useSpotifyPlayer(token);
     const { playlists, artists } = useSpotifyLibrary(token);
     const topTracksHistory = useTopTracksHistory(token);
 
-
+const cerrarSesion = () => {
+    clearUser();
+    localStorage.clear();
+    window.location.href = "/";
+};
 
     useEffect(() => {
         const handleResize = () => {
@@ -97,7 +101,15 @@ function Layout () {
 
             <div className={`main-wrapper`}>
                 <header className="header">
-                    parte spotifyUser
+                    <div className="header-content">
+                        <div className="header-greeting">
+                            {user?.display_name && `holiii ${user.display_name}`}
+                        </div>
+                        <button className="logout-button"
+                            onClick={cerrarSesion}>
+                            Cerrar Sesión
+                        </button>
+                    </div>
                 </header>
                 <section className="content">
                     <Outlet />

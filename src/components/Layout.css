@@ -317,6 +317,47 @@ html, body {
     }
 }
 
+.header {
+    background-color: #1a1a1a;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 64px;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header-greeting {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.logout-button {
+    position: absolute;
+    right: 0;
+    background-color: #ff3b3f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+    background-color: #e22f33;
+}
+
 @media (min-width: 481px) and (max-width: 768px) {
     .sidebar {
         width: 45%;

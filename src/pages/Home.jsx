@@ -1,11 +1,9 @@
 import "./Home.css";
 import useUserStore from "../store/useUserStore.js"; // Importar el store de Zustand
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Home() {
-    const {guestName, token, spotifyUser, setSpotifyUser, clearUser} = useUserStore();
-    const navigate = useNavigate();
+    const {guestName, token, spotifyUser, setSpotifyUser} = useUserStore();
 
     useEffect(() => {
         const obtenerperfil = async () => {
@@ -37,12 +35,6 @@ function Home() {
                 holiii {mostrarNombre()}
             </h1>
             <p>prueba 1</p>
-            <button onClick={() => {
-                clearUser();
-                navigate("/");
-            }} className="logout-button">
-                Cerrar sesión
-            </button>
         </div>
     );
 }
