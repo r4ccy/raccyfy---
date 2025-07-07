@@ -9,7 +9,6 @@ export function usarAutenticacionSpotify() {
     "user-top-read",
     "playlist-read-private",
     "playlist-read-collaborative",
-    "user-follow-read",
     "user-library-read"
   ].join(" ");
 
